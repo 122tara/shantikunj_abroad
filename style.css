@@ -64,7 +64,6 @@ body {
 
 /* Inputs */
 input, textarea, select {
-    padding: 7px;
     border: 1px solid #aaa;
     border-radius: 5px;
     font-weight: bold;
@@ -152,3 +151,4 @@ th {
     font-weight: bold;
     text-align: center;
 }
+
