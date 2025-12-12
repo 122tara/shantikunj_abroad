@@ -202,7 +202,7 @@ async function downloadPDF() {
 </script> -->
 
 
-    <script>
+    <!-- <script>
 async function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const element = document.getElementById("formContent");
@@ -239,11 +239,48 @@ async function downloadPDF() {
     pdf.addImage(imgData, "JPEG", 0, 0, pageWidth, imgHeight);
     pdf.save("Abroad_Cell_Form.pdf");
 }
+</script> -->
+
+    <script>
+async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const element = document.getElementById("formContent");
+
+    const originalWidth = element.style.width;
+    const originalMaxWidth = element.style.maxWidth;
+
+    // SAFE WIDTH (prevents cutting on right
+    element.style.width = "540px";
+    element.style.maxWidth = "540px";
+
+    await new Promise(r => setTimeout(r, 250));
+
+    // increase scale for higher clarity (file size increases)
+    const canvas = await html2canvas(element, {
+        scale: 2.5,   // 💛 higher scale = sharper PDF (1–2MB)
+        useCORS: true
+    });
+
+    // Restore original layout
+    element.style.width = originalWidth;
+    element.style.maxWidth = originalMaxWidth;
+
+    // JPEG quality 0.90 → larger but still <2MB
+    const imgData = canvas.toDataURL("image/jpeg", 0.90);
+
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const imgHeight = (canvas.height * pageWidth) / canvas.width;
+
+    pdf.addImage(imgData, "JPEG", 0, 0, pageWidth, imgHeight);
+    pdf.save("Abroad_Cell_Form.pdf");
+}
 </script>
 
 
 </body>
 </html>
+
 
 
 
