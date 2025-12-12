@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <!-- FINAL PERFECT PDF SCRIPT -->
-<script>
+<!-- <script>
     async function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const element = document.getElementById("formContent");
@@ -161,10 +161,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
     pdf.save("Abroad_Cell_Form.pdf");
 }
- </script>
+ </script> -->
+    <script>
+async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const element = document.getElementById("formContent");
+
+    // TEMP: reduce size for perfect capture
+    element.style.transform = "scale(0.70)";
+    element.style.transformOrigin = "top left";
+
+    await new Promise(res => setTimeout(res, 200));
+
+    // Capture with lower scale
+    const canvas = await html2canvas(element, {
+        scale: 1,           // ↓ lower DPI = MUCH smaller PDF
+        useCORS: true,
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: element.scrollWidth * 0.70
+    });
+
+    // Reset form
+    element.style.transform = "";
+    element.style.transformOrigin = "";
+
+    // Convert canvas to JPEG with compression
+    const imgData = canvas.toDataURL("image/jpeg", 0.45);
+    // 0.45 = 45% quality → very small file
+
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const imgHeight = canvas.height * (pageWidth / canvas.width);
+
+    pdf.addImage(imgData, "JPEG", 0, 0, pageWidth, imgHeight, undefined, "FAST");
+
+    pdf.save("Abroad_Cell_Form.pdf");
+}
+</script>
+
 
 </body>
 </html>
+
 
 
 
