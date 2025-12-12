@@ -140,39 +140,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- FINAL PERFECT PDF SCRIPT -->
 <script>
-async function downloadPDF() {
+    async function downloadPDF() {
     const { jsPDF } = window.jspdf;
-
     const element = document.getElementById("formContent");
 
-    // TEMP: Expand to full width for perfect PDF
-    element.style.maxWidth = "100%";
-    element.style.width = "100%";
+    // 🔥 STEP 1 — TEMPORARY SCALE FOR MOBILE (fits everything in canvas)
+    element.style.transform = "scale(0.70)";
+    element.style.transformOrigin = "top left";
 
+    // wait for render
+    await new Promise(r => setTimeout(r, 300));
+
+    // 🔥 STEP 2 — CAPTURE
     const canvas = await html2canvas(element, {
         scale: 2,
+        useCORS: true,
         scrollX: 0,
         scrollY: 0,
-        windowWidth: element.scrollWidth,
-        windowHeight: element.scrollHeight
+        windowWidth: element.scrollWidth * 0.70
     });
+
+    // RESET
+    element.style.transform = "";
+    element.style.transformOrigin = "";
 
     const imgData = canvas.toDataURL("image/png");
 
     const pdf = new jsPDF("p", "mm", "a4");
     const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
 
-    const imgWidth = pageWidth;
-    const imgHeight = canvas.height * (imgWidth / canvas.width);
+    // Fit entire scaled image inside 1 page
+    pdf.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight);
 
-    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
     pdf.save("Abroad_Cell_Form.pdf");
-
-    // RESTORE centered layout
-    element.style.maxWidth = "1100px";
-    element.style.width = "90%";
 }
-</script>
+ </script>
 
 </body>
 </html>
+
