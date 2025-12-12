@@ -6,47 +6,46 @@
 
 <link rel="stylesheet" href="style.css">
 
-<!-- JS libraries for PDF -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+<!-- Local JS Libraries -->
 <script src="html2canvas.min.js"></script>
 <script src="jspdf.umd.min.js"></script>
-
 
 </head>
 <body>
 
-<button class="download-btn" onclick="downloadPDF()">Download PDF</button>
+
+
+<!-- <div class="form-container" id="formContent"> -->
+
+    <button class="download-btn" onclick="downloadPDF()">DOWNLOAD PDF</button>
+
 
 <div class="form-container" id="formContent">
-
-<!-- <img id="watermark" class="wm" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAACzCAIAAAC2IU97AAAQAElEQVR4Aex8B4AcyXW/9+u66q5rG0hQUpCQkJCQkJCQkJCQkJCQkJDQ2P8AxEYyNyR4nDdPZt9vvvvuezuzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7JyE2d8bnO8M8RPnfn+Yf9y9S/PEeO8TVjWcYxNs2AwG0fAGBYDRoPBoMBgOBwOA4Gg4FgMhgMBoNBoPB4FAoHKZpjvG4nM1zv93nf2OLeWeO+49QxhhCGEYRhGNm3bt3f//69u3bt2/fv3//fv36uLh4lJKS0rpJkgkNBoNBoMBkPBYLBYLHa9pwHi8Xh/f39vb29ubg4ODg4Njb29vZ2dnJycmhoaMXExGTRarY1+txuNpvV6vW7XY7XYbDYbDabfZ7PZbDZbDb7fZ7PZbDaZTCYpJElWrVbFYjFYLBYLJZDL5bJYLNYrFYrFYrFaLxWKxWKzWYzWazWazWaLxWKxWLxWKwWCyWQyGQwGQwGq1Wo1Go1Go0Gg0Go1Go9EolEol0Oh0Oh0Oh0OgwGAwGA6HQ6nU6nU6HU6nU6nU6HQ6Gg0Gg8Gg0Gg8FgMBkMhkMhkslkMhkslkMhkslkMhkMhkslkMhkslkMhkMhkslkMhkslkMhkslkMhkslkMhkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslgslgsFgslkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhgsFgslkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMhkslkMjQ0"> -->
-
 
     <!-- HEADER -->
     <div class="custom-header">
         <div class="header-bg">
             <div class="header-center">
+
                 <div class="hindi-title">
                     शांतिकुंज <span class="green-text">हरिद्वार</span>
                 </div>
 
                 <div class="abroad-logo">
-                    <!-- <span class="a">A</span> -->
                     <span class="broad">Abroad</span>
                     <span class="cell">Cell</span>
                     <span class="cell">Visitors</span>
                     <span class="cell">Form</span>
                 </div>
+
             </div>
         </div>
     </div>
 
     <div class="fill-note">PLEASE FILL IN CAPITAL LETTERS</div>
 
-
     <!-- PERSONAL DETAILS -->
-    <p class="section-title">PERSONAL DETAILS <u></u></p>
+    <p class="section-title">PERSONAL DETAILS</p>
 
     <table>
         <tr><td>FULL NAME</td><td><input type="text" style="width:400px"></td></tr>
@@ -67,10 +66,10 @@
         <tr><td>E-MAIL ID</td><td><input type="email" style="width:300px"></td></tr>
         <tr><td>QUALIFICATION</td><td><input class="small-input"> PROFESSION <input class="small-input"></td></tr>
         <tr><td>ASSOCIATED WITH AWGP SINCE</td><td><input class="small-input"></td></tr>
-        <tr><td>PARTICIPATE IN ACTIVITY OG AWGP</td><td><input style="width:300px"></td></tr>
+        <tr><td>PARTICIPATE IN ACTIVITY OF AWGP</td><td><input style="width:300px"></td></tr>
     </table>
 
-    <!-- FAMILY -->
+    <!-- FAMILY DETAILS -->
     <p class="section-title">FAMILY DETAILS RESIDING IN THE ABOVE ADDRESS</p>
 
     <table class="responsive-table">
@@ -78,141 +77,101 @@
             <tr><th>NAME</th><th>DOB</th><th>RELATION</th><th>PROFESSION</th></tr>
         </thead>
         <tbody>
-            <tr>
-                <td><input></td>
-                <td><input type="text" placeholder="DD / MM / YYYY"></td>
-                <td><input></td>
-                <td><input></td>
-               
-            </tr>
-             <tr>
-                <td><input></td>
-                <td><input type="text" placeholder="DD / MM / YYYY"></td>
-                <td><input></td>
-                <td><input></td>
-               
-            </tr>
-             
-            <tr>
-                <td><input></td>
-                <td><input type="text" placeholder="DD / MM / YYYY"></td>
-                <td><input></td>
-                <td><input></td>
-            </tr>
-            <tr>
-                <td><input></td>
-                <td><input type="text" placeholder="DD / MM / YYYY"></td>
-                <td><input></td>
-                <td><input></td>
-            </tr>
+            <tr><td><input></td><td><input placeholder="DD / MM / YYYY"></td>
+                <td><input></td><td><input></td></tr>
+
+            <tr><td><input></td><td><input placeholder="DD / MM / YYYY"></td>
+                <td><input></td><td><input></td></tr>
+
+            <tr><td><input></td><td><input placeholder="DD / MM / YYYY"></td>
+                <td><input></td><td><input></td></tr>
+
+            <tr><td><input></td><td><input placeholder="DD / MM / YYYY"></td>
+                <td><input></td><td><input></td></tr>
         </tbody>
     </table>
 
-    <!-- RELATIVE -->
+    <!-- RELATIVE DETAILS -->
     <p class="section-title">RELATIVE IN OTHER COUNTRY</p>
 
     <table class="responsive-table">
         <thead><tr><th>NAME</th><th>RELATION</th><th>COUNTRY</th><th>E-MAIL ID</th></tr></thead>
         <tbody>
-            <tr><td><input></td><td><input></td><td><input></td><td><input type="email"></td></tr>
-            <tr><td><input></td><td><input></td><td><input></td><td><input type="email"></td></tr>
-            <tr><td><input></td><td><input></td><td><input></td><td><input type="email"></td></tr>
-            <tr><td><input></td><td><input></td><td><input></td><td><input type="email"></td></tr>
+            <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
         </tbody>
     </table>
 
+    <!-- MAGAZINES -->
     <p class="section-title">MAGAZINE SUBSCRIPTION DETAILS</p>
 
     <table>
-        <tr><td>AKHAND JYOTI</td><td> HINDI <input type="radio"> ENGLISH <input type="radio"> BANGLA <input type="radio"> ODHIYA <input type="radio"> ASAMIYA <input type="radio"></td></tr>
-        <tr><td>YUG SHAKTI GAYATRI</td><td> HINDI <input type="radio"> GUJRATI <input type="radio"> BANGLA <input type="radio"> ODHIYA <input type="radio"> MARATHI <input type="radio"></td></tr>
-        <tr><td>PRAGYA ABHIYAN</td><td> HINDI <input type="radio"> GUJRATI <input type="radio"></td></tr>
-        <tr><td>YUG PRBHA VIDEO</td><td> HINDI <input type="radio"></td></tr>
-        <tr><td>YUG NIRMAN YOJNA</td><td> HINDI <input type="radio"> GUJRATI <input type="radio"></td></tr>
-        
+        <tr><td>AKHAND JYOTI</td><td>HINDI <input type="radio"> ENGLISH <input type="radio"> BANGLA <input type="radio"> ODHIYA <input type="radio"> ASAMIYA <input type="radio"></td></tr>
+        <tr><td>YUG SHAKTI GAYATRI</td><td>HINDI <input type="radio"> GUJRATI <input type="radio"> BANGLA <input type="radio"> ODHIYA <input type="radio"> MARATHI <input type="radio"></td></tr>
+        <tr><td>PRAGYA ABHIYAN</td><td>HINDI <input type="radio"> GUJRATI <input type="radio"></td></tr>
+        <tr><td>YUG PRABHA VIDEO</td><td>HINDI <input type="radio"></td></tr>
+        <tr><td>YUG NIRMAN YOJNA</td><td>HINDI <input type="radio"> GUJRATI <input type="radio"></td></tr>
     </table>
-    <table>
-    <tr><td>PARIJAN STATUS <input type="checkbox"></td><td> NEW <input type="checkbox"> KEY PERSON <input type="checkbox"> BSS <input type="checkbox"></td></tr>
-</table>
-    <br><br>
 
-    DATE: <input type="text" placeholder="DD / MM / YYYY">
+    <table>
+        <tr><td>PARIJAN STATUS <input type="checkbox"></td>
+            <td>NEW <input type="checkbox"> KEY PERSON <input type="checkbox"> BSS <input type="checkbox"></td></tr>
+    </table>
+
+    <br><br>
+    DATE: <input placeholder="DD / MM / YYYY">
     <div class="signature">SIGNATURE</div>
 
 </div>
 
+<!-- UNIVERSAL UPPERCASE SCRIPT -->
 <script>
-// async function downloadPDF() {
-//     const { jsPDF } = window.jspdf;
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("input, textarea").forEach(el => {
+        el.addEventListener("input", function () {
+            this.value = this.value.toUpperCase();
+        });
+    });
+});
+</script>
 
-//     const element = document.getElementById("formContent");
 
-//     const canvas = await html2canvas(element, { scale: 2 });
-
-//     const imgData = canvas.toDataURL("image/png");
-
-//     const pdf = new jsPDF("p", "mm", "a4");
-//     const pageWidth = pdf.internal.pageSize.getWidth();
-//     const pageHeight = pdf.internal.pageSize.getHeight();
-
-//     let imgWidth = pageWidth;
-//     let imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-//     let heightLeft = imgHeight;
-//     let position = 0;
-
-//     pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-//     heightLeft -= pageHeight;
-
-//     while (heightLeft > 0) {
-//         position = heightLeft - imgHeight;
-//         pdf.addPage();
-//         pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-//         heightLeft -= pageHeight;
-//     }
-
-//     pdf.save("Abroad_Cell_Form.pdf");
-// }
+<!-- FINAL PERFECT PDF SCRIPT -->
+<script>
 async function downloadPDF() {
     const { jsPDF } = window.jspdf;
+
     const element = document.getElementById("formContent");
 
+    // TEMP: Expand to full width for perfect PDF
+    element.style.maxWidth = "100%";
+    element.style.width = "100%";
+
     const canvas = await html2canvas(element, {
-        scale: 1.5,
-        useCORS: true
+        scale: 2,
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: element.scrollWidth,
+        windowHeight: element.scrollHeight
     });
 
     const imgData = canvas.toDataURL("image/png");
 
     const pdf = new jsPDF("p", "mm", "a4");
     const pageWidth = pdf.internal.pageSize.getWidth();
-    const pageHeight = pdf.internal.pageSize.getHeight();
 
     const imgWidth = pageWidth;
     const imgHeight = canvas.height * (imgWidth / canvas.width);
 
-    // 🔥 Force everything to fit in ONE page by scaling
-    const scaleFactor = pageHeight / imgHeight;
-
-    pdf.addImage(
-        imgData,
-        "PNG",
-        0,
-        0,
-        imgWidth * scaleFactor,
-        imgHeight * scaleFactor
-    );
-
+    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
     pdf.save("Abroad_Cell_Form.pdf");
-}
 
-</script>
-<script>
-document.querySelectorAll("input[type='text'], input[type='email'], input[type='number']").forEach(function(input) {
-    input.addEventListener("input", function() {
-        this.value = this.value.toUpperCase();
-    });
-});
+    // RESTORE centered layout
+    element.style.maxWidth = "1100px";
+    element.style.width = "90%";
+}
 </script>
 
 </body>
