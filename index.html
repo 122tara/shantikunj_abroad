@@ -168,18 +168,18 @@ async function downloadPDF() {
     const element = document.getElementById("formContent");
 
     // TEMP: reduce size for perfect capture
-    element.style.transform = "scale(0.70)";
+    element.style.transform = "scale(0.90)";
     element.style.transformOrigin = "top left";
 
     await new Promise(res => setTimeout(res, 200));
 
     // Capture with lower scale
     const canvas = await html2canvas(element, {
-        scale: 1,           // ↓ lower DPI = MUCH smaller PDF
+        scale: 1.4,           // ↓ lower DPI = MUCH smaller PDF
         useCORS: true,
         scrollX: 0,
         scrollY: 0,
-        windowWidth: element.scrollWidth * 0.70
+        windowWidth: element.scrollWidth * 0.90
     });
 
     // Reset form
@@ -203,6 +203,7 @@ async function downloadPDF() {
 
 </body>
 </html>
+
 
 
 
